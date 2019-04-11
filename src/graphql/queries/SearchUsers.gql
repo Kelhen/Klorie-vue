@@ -1,0 +1,6 @@
+query SearchUsers($UserWhereInput: UserWhereInput) {
+  users(where: $UserWhereInput) {
+    id
+    name
+  }
+}

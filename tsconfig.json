@@ -17,6 +17,15 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@modules/*": [
+        "src/store/modules/*"
+      ],
+      "@types/*": [
+        "src/types/*"
       ]
     },
     "lib": [
