@@ -23,12 +23,10 @@ export class Food extends VuexModule {
     this.count -= delta;
   }
 
-  // action 'incr' commits mutation 'increment' when done with return value as payload
   @Action({ commit: 'increment' })
   public incr(delta: number) {
     return delta;
   }
-  // action 'decr' commits mutation 'decrement' when done with return value as payload
   @Action
   public decr(delta: number) {
     this.decrement(delta);
