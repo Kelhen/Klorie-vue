@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-button @click="fetchData">Fetch data</el-button>
-    <p v-for="user in users" :key="user.id">{{ user.name }}</p>
+    <p class="bg-blue" v-for="user in users" :key="user.id">{{ user.name }}</p>
   </div>
 </template>
 
@@ -28,7 +28,9 @@ export default class App extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '@/assets/scss/index.scss';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
