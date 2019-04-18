@@ -11,6 +11,9 @@ import { Button } from 'element-ui';
 import HelloWorld from './components/HelloWorld.vue';
 // gql
 import USERS from '@/graphql/queries/Users.gql';
+// store
+import { getModule } from 'vuex-module-decorators';
+import { Example } from '@/store/modules/example';
 
 @Component({
   components: {
@@ -19,10 +22,12 @@ import USERS from '@/graphql/queries/Users.gql';
 })
 export default class App extends Vue {
   private users: any[] = [];
+  private exampleStore = getModule(Example, this.$store);
 
   private fetchData() {
     this.$apollo.query({ query: USERS }).then((response: any) => {
       this.users = response.data.users;
+      this.exampleStore.incr(1);
     });
   }
 }
