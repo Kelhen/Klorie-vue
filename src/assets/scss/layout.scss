@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
+ body {
+  margin: 0px;
+}
+
+ :root {
+  --light: 50;
+  --threshold: 65;
+  --switch: calc((var(--light) - var(--threshold)) * -100%);
+}
+
+#app {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  height: 100vh;
+}
+
+ .header,
+.footer {
+  color: hsl(0, 0%, var(--switch));
+  flex: 0 0 auto;
+  min-height: 45px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+ .header {
+  background: rgb(0,114,181); /* #0072b5 */
+}
+
+ .footer {
+  background: rgb(200,16,46); /* #c8102e */
+}
+
+ .content {
+  -webkit-overflow-scrolling: touch;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-top: 1rem;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  position: relative;/* need this to position inner content */
+}
