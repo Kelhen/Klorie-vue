@@ -10,7 +10,7 @@
       <Option v-for="(item, index) in data" :value="item.name" :key="index">{{ item.name }}</Option>
     </AutoComplete>
     <Button type="primary" @click="fetchData">Fetch data</Button>
-    <!-- <p class="bg-blue" v-for="user in users" :key="user.id">{{ user.name }}</p> -->
+    <p class="bg-blue" v-for="user in users" :key="user.id">{{ user.name }}</p>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default class Home extends Vue {
   public data: any[] = [];
 
   public fetchData() {
+
     this.$apollo.query({ query: USERS }).then((response: any) => {
       this.users = response.data.users;
     });
