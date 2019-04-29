@@ -6,5 +6,6 @@ declare module 'iview/dist/types/message' {
   export const Message: Message;
 }
 declare module 'iview/dist/types/LoadingBar' {
-  export const LoadingBar: LoadingBar;
+  // FIXME: should be type LoadingBar
+  export const LoadingBar: any;
 }
