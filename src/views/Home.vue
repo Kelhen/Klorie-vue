@@ -18,6 +18,9 @@
 import { Component, Vue } from 'vue-property-decorator';
 // gql
 import USERS from '@/graphql/queries/Users.gql';
+// store
+import { getModule } from 'vuex-module-decorators';
+import { Example } from '@/store/modules/example';
 
 @Component({
   components: {},
@@ -26,6 +29,7 @@ export default class Home extends Vue {
   public users: any[] = [];
   public select = '';
   public data: any[] = [];
+  public exampleStore = getModule(Example, this.$store);
 
   public fetchData() {
     this.$Loading.start();
@@ -33,6 +37,7 @@ export default class Home extends Vue {
       .query({ query: USERS })
       .then((response: any) => {
         this.users = response.data.users;
+        this.exampleStore.incr(1);
         this.$Loading.finish();
       })
       .catch(() => {
