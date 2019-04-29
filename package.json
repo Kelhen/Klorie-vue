@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "schema:download": "apollo schema:download --endpoint=http://localhost:4466/ ./src/types/graphql/schema.json",
+    "codegen:generate": "apollo codegen:generate --includes=./src/graphql/**/*.gql --localSchemaFile=./src/types/graphql/schema.json --outputFlat --target=typescript ./src/types/graphql/schemaTypes.ts",
+    "gen:types": "npm run schema:download && npm run codegen:generate"
   },
   "dependencies": {
     "@types/graphql": "^14.2.0",
@@ -25,6 +28,7 @@
     "@vue/cli-plugin-pwa": "^3.7.0",
     "@vue/cli-plugin-typescript": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
+    "apollo": "^2.9.0",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.11.0",
     "compression-webpack-plugin": "^2.0.0",

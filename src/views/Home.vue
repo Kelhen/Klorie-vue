@@ -21,21 +21,23 @@ import USERS from '@/graphql/queries/Users.gql';
 // store
 import { getModule } from 'vuex-module-decorators';
 import { Example } from '@/store/modules/example';
+// types
+import { UserFields } from '@/types/graphql/schemaTypes';
 
 @Component({
   components: {},
 })
 export default class Home extends Vue {
-  public users: any[] = [];
+  public users: UserFields[] = [];
   public select = '';
-  public data: any[] = [];
   public exampleStore = getModule(Example, this.$store);
+  public data: UserFields[] = [];
 
   public fetchData() {
     this.$Loading.start();
     this.$apollo
       .query({ query: USERS })
-      .then((response: any) => {
+      .then((response) => {
         this.users = response.data.users;
         this.exampleStore.incr(1);
         this.$Loading.finish();
