@@ -28,10 +28,16 @@ export default class Home extends Vue {
   public data: any[] = [];
 
   public fetchData() {
-
-    this.$apollo.query({ query: USERS }).then((response: any) => {
-      this.users = response.data.users;
-    });
+    this.$Loading.start();
+    this.$apollo
+      .query({ query: USERS })
+      .then((response: any) => {
+        this.users = response.data.users;
+        this.$Loading.finish();
+      })
+      .catch(() => {
+        this.$Loading.error();
+      });
   }
 
   public searchUser(value: string) {
